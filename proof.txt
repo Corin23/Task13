@@ -1,0 +1,48 @@
+1. copied the .config file from Task11 into Linus' repo.
+
+2.corin@otp-cdobrica-l1:~/Desktop/Tasks/linux$ make bzImage
+
+---------------------------------------------------------------------------
+
+AS      arch/x86/boot/header.o
+  CC      arch/x86/boot/main.o
+  CC      arch/x86/boot/memory.o
+  CC      arch/x86/boot/pm.o
+  AS      arch/x86/boot/pmjump.o
+  CC      arch/x86/boot/printf.o
+  CC      arch/x86/boot/regs.o
+  CC      arch/x86/boot/string.o
+  CC      arch/x86/boot/tty.o
+  CC      arch/x86/boot/video.o
+  CC      arch/x86/boot/video-mode.o
+  CC      arch/x86/boot/version.o
+  CC      arch/x86/boot/video-vga.o
+  CC      arch/x86/boot/video-vesa.o
+  CC      arch/x86/boot/video-bios.o
+  LD      arch/x86/boot/setup.elf
+  OBJCOPY arch/x86/boot/setup.bin
+  OBJCOPY arch/x86/boot/vmlinux.bin
+  HOSTCC  arch/x86/boot/tools/build
+  BUILD   arch/x86/boot/bzImage
+Kernel: arch/x86/boot/bzImage is ready  (#1)
+
+
+
+corin@otp-cdobrica-l1:~/Desktop/Tasks/linux$ cd arch/x86/boot/
+corin@otp-cdobrica-l1:~/Desktop/Tasks/linux/arch/x86/boot$ ls
+a20.c       cmdline.c   cpuflags.c              edd.c        main.o          pm.c      setup.bin  tty.o         video-mode.c  voffset.h
+a20.o       cmdline.o   cpuflags.h              edd.o        Makefile        pmjump.o  setup.elf  version.c     video-mode.o  zoffset.h
+apm.c       compressed  cpuflags.o              genimage.sh  memory.c        pmjump.S  setup.ld   version.o     video.o
+bioscall.o  copy.o      cpu.o                   header.o     memory.o        pm.o      string.c   vesa.h        video-vesa.c
+bioscall.S  copy.S      cpustr.h                header.S     mkcpustr        printf.c  string.h   video-bios.c  video-vesa.o
+bitops.h    cpu.c       ctype.h                 install.sh   mkcpustr.c      printf.o  string.o   video-bios.o  video-vga.c
+boot.h      cpucheck.c  early_serial_console.c  io.h         msr.h           regs.c    tools      video.c       video-vga.o
+bzImage     cpucheck.o  early_serial_console.o  main.c       mtools.conf.in  regs.o    tty.c      video.h       vmlinux.bin
+
+
+corin@otp-cdobrica-l1:~/Desktop/Tasks/linux/arch/x86/boot$ mkinitramfs -o initrd.img
+corin@otp-cdobrica-l1:~/Desktop/Tasks/linux/arch/x86/boot$ qemu-system-x86_64 -kernel bzImage -initrd initrd.img -m 1024
+
+
+
+
