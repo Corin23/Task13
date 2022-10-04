@@ -139,8 +139,7 @@ corin@otp-cdobrica-l1:~/Desktop/Tasks/myconfig$ cp bzImage ~/Desktop/Tasks/Yocto
 
 genericx86-64 login: root
 root@genericx86-64:~# uname -a
-Linux genericx86-64 6.0.0-yocto-standard+ #1 SMP ..... 2022 x86_64 x86_64 x86_64 GNU/Linux
-
+Linux genericx86-64 6.0.0-yocto-standard-00844-g725737e7c21d #2 SMP PREEMPT_DYNAMIC .... 2022 x86_64 x86_64 x86_64 GNU/Linux
 
 corin@otp-cdobrica-l1:~/Desktop/Tasks/Yocto/poky/build/tmp/deploy/images/genericx86-64$ sudo !!
 sudo dd if=core-image-full-cmdline-genericx86-64-20220930120458.rootfs.wic of=/dev/sda status=progress
@@ -165,9 +164,10 @@ NUC:
 
 genericx86-64 login: root
 root@genericx86-64:~# uname -a
-Linux genericx86-64 6.0.0-yocto-standard+ #1 SMP ..... 2022 x86_64 x86_64 x86_64 GNU/Linux
+Linux genericx86-64 6.0.0-yocto-standard-00844-g725737e7c21d #2 SMP PREEMPT_DYNAMIC .... 2022 x86_64 x86_64 x86_64 GNU/Linux
 root@genericx86-64:~# lsmod 
 
+...............................
 
 
 
