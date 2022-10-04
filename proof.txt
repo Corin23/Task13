@@ -1,47 +1,175 @@
-1. copied the .config file from Task11 into Linus' repo.
+corin@otp-cdobrica-l1:~/Desktop/Tasks/linux$ make O=~/Desktop/Tasks/myconfig olddefconfig
+make[1]: Entering directory '/home/corin/Desktop/Tasks/myconfig'
+  GEN     Makefile
+  HOSTCC  scripts/basic/fixdep
+  HOSTCC  scripts/kconfig/conf.o
+  HOSTCC  scripts/kconfig/confdata.o
+  HOSTCC  scripts/kconfig/expr.o
+  LEX     scripts/kconfig/lexer.lex.c
+  YACC    scripts/kconfig/parser.tab.[ch]
+  HOSTCC  scripts/kconfig/lexer.lex.o
+  HOSTCC  scripts/kconfig/menu.o
+  HOSTCC  scripts/kconfig/parser.tab.o
+  HOSTCC  scripts/kconfig/preprocess.o
+  HOSTCC  scripts/kconfig/symbol.o
+  HOSTCC  scripts/kconfig/util.o
+  HOSTLD  scripts/kconfig/conf
+#
+# using defaults found in /boot/config-5.15.0-48-generic
+#
+.config:435:warning: symbol value 'm' invalid for I8K
+.config:2000:warning: symbol value 'm' invalid for MCTP
+.config:8860:warning: symbol value 'm' invalid for VIDEO_ZORAN_DC30
+.config:8861:warning: symbol value 'm' invalid for VIDEO_ZORAN_ZR36060
+.config:8862:warning: symbol value 'm' invalid for VIDEO_ZORAN_BUZ
+.config:8863:warning: symbol value 'm' invalid for VIDEO_ZORAN_DC10
+.config:8864:warning: symbol value 'm' invalid for VIDEO_ZORAN_LML33
+.config:8865:warning: symbol value 'm' invalid for VIDEO_ZORAN_LML33R10
+.config:8866:warning: symbol value 'm' invalid for VIDEO_ZORAN_AVS6EYES
+.config:9957:warning: symbol value 'm' invalid for ANDROID_BINDER_IPC
+.config:9958:warning: symbol value 'm' invalid for ANDROID_BINDERFS
+.config:10699:warning: symbol value 'm' invalid for CRYPTO_BLAKE2S_X86
+#
+# configuration written to .config
+#
+make[1]: Leaving directory '/home/corin/Desktop/Tasks/myconfig'
 
-2.corin@otp-cdobrica-l1:~/Desktop/Tasks/linux$ make bzImage
 
----------------------------------------------------------------------------
 
-AS      arch/x86/boot/header.o
-  CC      arch/x86/boot/main.o
-  CC      arch/x86/boot/memory.o
-  CC      arch/x86/boot/pm.o
-  AS      arch/x86/boot/pmjump.o
-  CC      arch/x86/boot/printf.o
-  CC      arch/x86/boot/regs.o
-  CC      arch/x86/boot/string.o
-  CC      arch/x86/boot/tty.o
-  CC      arch/x86/boot/video.o
-  CC      arch/x86/boot/video-mode.o
-  CC      arch/x86/boot/version.o
-  CC      arch/x86/boot/video-vga.o
-  CC      arch/x86/boot/video-vesa.o
+corin@otp-cdobrica-l1:~/Desktop/Tasks/linux$ cat config-OCT03 > ~/Desktop/Tasks/myconfig/.config
+
+
+corin@otp-cdobrica-l1:~/Desktop/Tasks/linux$ make -j16 O=~/Desktop/Tasks/myconfig modules
+make[1]: Entering directory '/home/corin/Desktop/Tasks/myconfig'
+  SYNC    include/config/auto.conf.cmd
+  GEN     Makefile
+*
+* Restart config...
+*
+*
+* General setup
+*
+
+---------------------------------------------------------------------
+  LD [M]  sound/pci/ice1712/snd-ice1712.ko
+  LD [M]  sound/pci/ice1712/snd-ice1724.ko
+  LD [M]  sound/pci/ice1712/snd-ice17xx-ak4xxx.ko
+  LD [M]  sound/pci/oxygen/snd-oxygen-lib.ko
+  LD [M]  sound/pci/oxygen/snd-oxygen.ko
+  LD [M]  sound/pci/oxygen/snd-virtuoso.ko
+  LD [M]  sound/pci/rme9652/snd-hdsp.ko
+  LD [M]  sound/pci/rme9652/snd-hdspm.ko
+  LD [M]  sound/pci/rme9652/snd-rme9652.ko
+  LD [M]  sound/pci/snd-atiixp-modem.ko
+  LD [M]  sound/pci/snd-atiixp.ko
+  LD [M]  sound/pci/snd-cmipci.ko
+  LD [M]  sound/pci/snd-ens1370.ko
+  LD [M]  sound/pci/snd-intel8x0.ko
+  LD [M]  sound/pci/snd-rme96.ko
+  LD [M]  sound/synth/emux/snd-emux-synth.ko
+  LD [M]  sound/usb/hiface/snd-usb-hiface.ko
+  LD [M]  sound/synth/snd-util-mem.ko
+  LD [M]  sound/usb/snd-usb-audio.ko
+  LD [M]  sound/usb/usx2y/snd-usb-us122l.ko
+  LD [M]  sound/usb/usx2y/snd-usb-usx2y.ko
+  LD [M]  virt/lib/irqbypass.ko
+  LD [M]  sound/usb/snd-usbmidi-lib.ko
+make[1]: Leaving directory '/home/corin/Desktop/Tasks/myconfig'
+
+
+corin@otp-cdobrica-l1:~/Desktop/Tasks/linux$ make -j16 O=~/Desktop/Tasks/myconfig
+make[1]: Entering directory '/home/corin/Desktop/Tasks/myconfig'
+  GEN     Makefile
+  DESCEND objtool
+  CALL    /home/corin/Desktop/Tasks/linux/scripts/atomic/check-atomics.sh
+  CALL    /home/corin/Desktop/Tasks/linux/scripts/checksyscalls.sh
+  CC      init/main.o
+  CHK     include/generated/compile.h
+  CC      init/do_mounts.o
+  CC      init/do_mounts_rd.o
+  CC      init/do_mounts_initrd.o
+  CC      init/initramfs.o
+  CC      init/calibrate.o
+  CC      init/init_task.o
+  UPD     include/generated/compile.h
+  CC      init/version.o
+  HOSTCC  usr/gen_init_cpio
+  CC      arch/x86/realmode/init.o
+  CC      arch/x86/entry/vsyscall/vsyscall_64.o
+  CC      arch/x86/events/amd/core.o
+  CC      arch/x86/kernel/fpu/init.o
+  CC      arch/x86/mm/pat/set_memory.o
+  CC      arch/x86/entry/vdso/vma.o
+  CC      kernel/sched/core.o
+  GEN     usr/initramfs_data.cpio
+  COPY    usr/initramfs_inc_data
+  AS      usr/initramfs_data.o
+
+--------------------------------------------------------------------------
+
+  GEN     Module.symvers
+  CC      arch/x86/boot/compressed/acpi.o
+  CC      arch/x86/boot/compressed/efi.o
+  GZIP    arch/x86/boot/compressed/vmlinux.bin.gz
   CC      arch/x86/boot/video-bios.o
+  HOSTCC  arch/x86/boot/tools/build
+  CC      arch/x86/boot/compressed/misc.o
+  CPUSTR  arch/x86/boot/cpustr.h
+  CC      arch/x86/boot/cpu.o
+  MKPIGGY arch/x86/boot/compressed/piggy.S
+  AS      arch/x86/boot/compressed/piggy.o
+  LD      arch/x86/boot/compressed/vmlinux
+  ZOFFSET arch/x86/boot/zoffset.h
+  OBJCOPY arch/x86/boot/vmlinux.bin
+  AS      arch/x86/boot/header.o
   LD      arch/x86/boot/setup.elf
   OBJCOPY arch/x86/boot/setup.bin
-  OBJCOPY arch/x86/boot/vmlinux.bin
-  HOSTCC  arch/x86/boot/tools/build
   BUILD   arch/x86/boot/bzImage
 Kernel: arch/x86/boot/bzImage is ready  (#1)
+make[1]: Leaving directory '/home/corin/Desktop/Tasks/myconfig'
+
+corin@otp-cdobrica-l1:~/Desktop/Tasks/myconfig$ make INSTALL_MOD_PATH=~/Desktop/Tasks/myconfig/modules modules_install
+
+---------------------------------------------------------------------------------------------------------------------
+
+
+corin@otp-cdobrica-l1:~/Desktop/Tasks/myconfig$ cp bzImage ~/Desktop/Tasks/Yocto/poky/build/tmp/deploy/images/genericx86-64
+
+~/Desktop/Tasks/Yocto/poky/build/tmp/deploy/images/genericx86-64$ qemu-system-x86_64 -enable-kvm -boot menu=on -drive file=/home/corin/Desktop/Tasks/Yocto/poky/build/tmp/deploy/images/genericx86-64/core-image-full-cmdline-genericx86-64-20220930120458.rootfs.ext4,format=raw  -m 2G -cpu host -smp 2 -kernel /home/corin/Desktop/Tasks/Yocto/poky/build/tmp/deploy/images/genericx86-64/bzImage -append "console=ttyS0,115200 root=/dev/sda rw ip=dhcp " -vga virtio -display sdl,gl=on
+
+genericx86-64 login: root
+root@genericx86-64:~# uname -a
+Linux genericx86-64 6.0.0-yocto-standard+ #1 SMP ..... 2022 x86_64 x86_64 x86_64 GNU/Linux
+
+
+corin@otp-cdobrica-l1:~/Desktop/Tasks/Yocto/poky/build/tmp/deploy/images/genericx86-64$ sudo !!
+sudo dd if=core-image-full-cmdline-genericx86-64-20220930120458.rootfs.wic of=/dev/sda status=progress
+390435328 bytes (390 MB, 372 MiB) copied, 69 s, 5,7 MB/s
+781470+0 records in
+781470+0 records out
+400112640 bytes (400 MB, 382 MiB) copied, 78,1568 s, 5,1 MB/s
+
+corin@otp-cdobrica-l1:~/Desktop/Tasks/Yocto/poky/build/tmp/deploy/images/genericx86-64$ mkdir ~/USB
+corin@otp-cdobrica-l1:~/Desktop/Tasks/Yocto/poky/build/tmp/deploy/images/genericx86-64$ sudo mount /dev/sda1 ~/USB
+corin@otp-cdobrica-l1:~/Desktop/Tasks/myconfig/arch/x86/boot$ cp bzImage ~/USB
+
+
+corin@otp-cdobrica-l1:~/Desktop/Tasks/Yocto/poky/build/tmp/deploy/images/genericx86-64$ sudo umount ~/USB
+corin@otp-cdobrica-l1:~/Desktop/Tasks/Yocto/poky/build/tmp/deploy/images/genericx86-64$ sudo mount /dev/sda2 ~/USB
+corin@otp-cdobrica-l1:~/Desktop/Tasks/myconfig/modules/lib/modules$ sudo cp -r 6.0.0-yocto-standard+/ ~/USB/lib/modules
+corin@otp-cdobrica-l1:~/Desktop/Tasks/Yocto/poky/build/tmp/deploy/images/genericx86-64$ sudo umount /dev/sda2
+
+
+NUC:
+
+
+genericx86-64 login: root
+root@genericx86-64:~# uname -a
+Linux genericx86-64 6.0.0-yocto-standard+ #1 SMP ..... 2022 x86_64 x86_64 x86_64 GNU/Linux
+root@genericx86-64:~# lsmod 
 
 
 
-corin@otp-cdobrica-l1:~/Desktop/Tasks/linux$ cd arch/x86/boot/
-corin@otp-cdobrica-l1:~/Desktop/Tasks/linux/arch/x86/boot$ ls
-a20.c       cmdline.c   cpuflags.c              edd.c        main.o          pm.c      setup.bin  tty.o         video-mode.c  voffset.h
-a20.o       cmdline.o   cpuflags.h              edd.o        Makefile        pmjump.o  setup.elf  version.c     video-mode.o  zoffset.h
-apm.c       compressed  cpuflags.o              genimage.sh  memory.c        pmjump.S  setup.ld   version.o     video.o
-bioscall.o  copy.o      cpu.o                   header.o     memory.o        pm.o      string.c   vesa.h        video-vesa.c
-bioscall.S  copy.S      cpustr.h                header.S     mkcpustr        printf.c  string.h   video-bios.c  video-vesa.o
-bitops.h    cpu.c       ctype.h                 install.sh   mkcpustr.c      printf.o  string.o   video-bios.o  video-vga.c
-boot.h      cpucheck.c  early_serial_console.c  io.h         msr.h           regs.c    tools      video.c       video-vga.o
-bzImage     cpucheck.o  early_serial_console.o  main.c       mtools.conf.in  regs.o    tty.c      video.h       vmlinux.bin
-
-
-corin@otp-cdobrica-l1:~/Desktop/Tasks/linux/arch/x86/boot$ mkinitramfs -o initrd.img
-corin@otp-cdobrica-l1:~/Desktop/Tasks/linux/arch/x86/boot$ qemu-system-x86_64 -kernel bzImage -initrd initrd.img -m 1024
 
 
 
